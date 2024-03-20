@@ -18,6 +18,8 @@
 		162877092BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877042BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf */; };
 		1628770A2BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877052BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf */; };
 		1628770D2BAB0B06001FEA91 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628770C2BAB0B06001FEA91 /* UIFont+Extension.swift */; };
+		1628770F2BAB0D5D001FEA91 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628770E2BAB0D5D001FEA91 /* UIColor+Extension.swift */; };
+		162877122BAB0D70001FEA91 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877112BAB0D70001FEA91 /* AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		162877042BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		162877052BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		1628770C2BAB0B06001FEA91 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		1628770E2BAB0D5D001FEA91 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		162877112BAB0D70001FEA91 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		162876FF2BAB0A1C001FEA91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				162877102BAB0D6A001FEA91 /* Color */,
 				1628770B2BAB0AF8001FEA91 /* Extensions */,
 				162877002BAB0A20001FEA91 /* Font */,
 			);
@@ -102,8 +107,17 @@
 			isa = PBXGroup;
 			children = (
 				1628770C2BAB0B06001FEA91 /* UIFont+Extension.swift */,
+				1628770E2BAB0D5D001FEA91 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		162877102BAB0D6A001FEA91 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				162877112BAB0D70001FEA91 /* AppColors.swift */,
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +198,9 @@
 				162876F02BAAFFEB001FEA91 /* ViewController.swift in Sources */,
 				162876EC2BAAFFEB001FEA91 /* AppDelegate.swift in Sources */,
 				1628770D2BAB0B06001FEA91 /* UIFont+Extension.swift in Sources */,
+				162877122BAB0D70001FEA91 /* AppColors.swift in Sources */,
 				162876EE2BAAFFEB001FEA91 /* SceneDelegate.swift in Sources */,
+				1628770F2BAB0D5D001FEA91 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
