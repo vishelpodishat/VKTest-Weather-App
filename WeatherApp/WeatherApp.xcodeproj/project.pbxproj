@@ -12,14 +12,14 @@
 		162876F02BAAFFEB001FEA91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162876EF2BAAFFEB001FEA91 /* ViewController.swift */; };
 		162876F52BAAFFED001FEA91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162876F42BAAFFED001FEA91 /* Assets.xcassets */; };
 		162876F82BAAFFED001FEA91 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 162876F72BAAFFED001FEA91 /* Base */; };
-		162877062BAB0AC5001FEA91 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877012BAB0AC5001FEA91 /* SF-Pro-Display-Semibold.otf */; };
-		162877072BAB0AC5001FEA91 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877022BAB0AC5001FEA91 /* SF-Pro-Display-Thin.otf */; };
-		162877082BAB0AC5001FEA91 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877032BAB0AC5001FEA91 /* SF-Pro-Display-Bold.otf */; };
-		162877092BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877042BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf */; };
-		1628770A2BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 162877052BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf */; };
-		1628770D2BAB0B06001FEA91 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628770C2BAB0B06001FEA91 /* UIFont+Extension.swift */; };
 		1628770F2BAB0D5D001FEA91 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628770E2BAB0D5D001FEA91 /* UIColor+Extension.swift */; };
 		162877122BAB0D70001FEA91 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877112BAB0D70001FEA91 /* AppColors.swift */; };
+		162877192BAB1A7E001FEA91 /* ListVC+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877182BAB1A7E001FEA91 /* ListVC+TableView.swift */; };
+		1628771B2BAB1AE5001FEA91 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628771A2BAB1AE5001FEA91 /* UITableView+Extension.swift */; };
+		1628771D2BAC52BC001FEA91 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628771C2BAC52BC001FEA91 /* WeatherModel.swift */; };
+		1628771F2BAC53C2001FEA91 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628771E2BAC53C2001FEA91 /* WeatherViewModel.swift */; };
+		162877212BAC54A4001FEA91 /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877202BAC54A4001FEA91 /* WeekTableViewCell.swift */; };
+		162877252BAC6E4D001FEA91 /* WeatherSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877242BAC6E4D001FEA91 /* WeatherSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,14 +30,14 @@
 		162876F42BAAFFED001FEA91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		162876F72BAAFFED001FEA91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		162876F92BAAFFED001FEA91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		162877012BAB0AC5001FEA91 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
-		162877022BAB0AC5001FEA91 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
-		162877032BAB0AC5001FEA91 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
-		162877042BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
-		162877052BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		1628770C2BAB0B06001FEA91 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		1628770E2BAB0D5D001FEA91 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		162877112BAB0D70001FEA91 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		162877182BAB1A7E001FEA91 /* ListVC+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListVC+TableView.swift"; sourceTree = "<group>"; };
+		1628771A2BAB1AE5001FEA91 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		1628771C2BAC52BC001FEA91 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		1628771E2BAC53C2001FEA91 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		162877202BAC54A4001FEA91 /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
+		162877242BAC6E4D001FEA91 /* WeatherSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +70,11 @@
 		162876EA2BAAFFEB001FEA91 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				162876FF2BAB0A1C001FEA91 /* Resources */,
 				162876EB2BAAFFEB001FEA91 /* AppDelegate.swift */,
 				162876ED2BAAFFEB001FEA91 /* SceneDelegate.swift */,
-				162876EF2BAAFFEB001FEA91 /* ViewController.swift */,
-				162876F42BAAFFED001FEA91 /* Assets.xcassets */,
-				162876F62BAAFFED001FEA91 /* LaunchScreen.storyboard */,
+				162877222BAC6E3C001FEA91 /* Core */,
+				162876FF2BAB0A1C001FEA91 /* Resources */,
+				162877132BAB16AD001FEA91 /* Main */,
 				162876F92BAAFFED001FEA91 /* Info.plist */,
 			);
 			path = WeatherApp;
@@ -84,30 +83,19 @@
 		162876FF2BAB0A1C001FEA91 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				162876F42BAAFFED001FEA91 /* Assets.xcassets */,
+				162876F62BAAFFED001FEA91 /* LaunchScreen.storyboard */,
 				162877102BAB0D6A001FEA91 /* Color */,
 				1628770B2BAB0AF8001FEA91 /* Extensions */,
-				162877002BAB0A20001FEA91 /* Font */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		162877002BAB0A20001FEA91 /* Font */ = {
-			isa = PBXGroup;
-			children = (
-				162877032BAB0AC5001FEA91 /* SF-Pro-Display-Bold.otf */,
-				162877042BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf */,
-				162877052BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf */,
-				162877012BAB0AC5001FEA91 /* SF-Pro-Display-Semibold.otf */,
-				162877022BAB0AC5001FEA91 /* SF-Pro-Display-Thin.otf */,
-			);
-			path = Font;
 			sourceTree = "<group>";
 		};
 		1628770B2BAB0AF8001FEA91 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1628770C2BAB0B06001FEA91 /* UIFont+Extension.swift */,
 				1628770E2BAB0D5D001FEA91 /* UIColor+Extension.swift */,
+				1628771A2BAB1AE5001FEA91 /* UITableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -118,6 +106,66 @@
 				162877112BAB0D70001FEA91 /* AppColors.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		162877132BAB16AD001FEA91 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				162877152BAB16B6001FEA91 /* Model */,
+				162877142BAB16B1001FEA91 /* View */,
+				162877162BAB16B9001FEA91 /* ViewModel */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		162877142BAB16B1001FEA91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				162877172BAB1A5F001FEA91 /* Cell */,
+				162876EF2BAAFFEB001FEA91 /* ViewController.swift */,
+				162877182BAB1A7E001FEA91 /* ListVC+TableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		162877152BAB16B6001FEA91 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1628771C2BAC52BC001FEA91 /* WeatherModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		162877162BAB16B9001FEA91 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1628771E2BAC53C2001FEA91 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		162877172BAB1A5F001FEA91 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				162877202BAC54A4001FEA91 /* WeekTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		162877222BAC6E3C001FEA91 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				162877232BAC6E40001FEA91 /* SearchBar */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		162877232BAC6E40001FEA91 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				162877242BAC6E4D001FEA91 /* WeatherSearchBar.swift */,
+			);
+			path = SearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,12 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				162877092BAB0AC5001FEA91 /* SF-Pro-Display-Medium.otf in Resources */,
-				162877072BAB0AC5001FEA91 /* SF-Pro-Display-Thin.otf in Resources */,
-				162877082BAB0AC5001FEA91 /* SF-Pro-Display-Bold.otf in Resources */,
-				162877062BAB0AC5001FEA91 /* SF-Pro-Display-Semibold.otf in Resources */,
 				162876F52BAAFFED001FEA91 /* Assets.xcassets in Resources */,
-				1628770A2BAB0AC5001FEA91 /* SF-Pro-Display-Regular.otf in Resources */,
 				162876F82BAAFFED001FEA91 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,11 +238,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162877192BAB1A7E001FEA91 /* ListVC+TableView.swift in Sources */,
+				1628771F2BAC53C2001FEA91 /* WeatherViewModel.swift in Sources */,
 				162876F02BAAFFEB001FEA91 /* ViewController.swift in Sources */,
+				162877212BAC54A4001FEA91 /* WeekTableViewCell.swift in Sources */,
+				1628771B2BAB1AE5001FEA91 /* UITableView+Extension.swift in Sources */,
 				162876EC2BAAFFEB001FEA91 /* AppDelegate.swift in Sources */,
-				1628770D2BAB0B06001FEA91 /* UIFont+Extension.swift in Sources */,
 				162877122BAB0D70001FEA91 /* AppColors.swift in Sources */,
 				162876EE2BAAFFEB001FEA91 /* SceneDelegate.swift in Sources */,
+				1628771D2BAC52BC001FEA91 /* WeatherModel.swift in Sources */,
+				162877252BAC6E4D001FEA91 /* WeatherSearchBar.swift in Sources */,
 				1628770F2BAB0D5D001FEA91 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +399,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,6 +427,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
