@@ -8,5 +8,6 @@
 import UIKit
 
 enum AppColors {
-    static let searchBar = UIColor().hex(0x818C99)
+    static let darkGrey = UIColor().hex(0x818C99)
+    static let grey = UIColor().hex(0xEAEDF0)
 }
