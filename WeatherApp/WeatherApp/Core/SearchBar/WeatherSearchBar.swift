@@ -22,17 +22,17 @@ final class WeatherSearchBar: UISearchBar {
     // MARK: - Setup Views
     private func style() {
         translatesAutoresizingMaskIntoConstraints = false
+        layer.cornerRadius = 14
         layer.masksToBounds = true
-        layer.cornerRadius = 10
         delegate = self
         barTintColor = .white
         endEditing(true)
-        searchTextField.backgroundColor = .white
+        searchTextField.backgroundColor = AppColors.grey
         searchTextField.font = .systemFont(ofSize: 14, weight: .semibold)
         searchTextField.attributedPlaceholder = NSAttributedString(
             string: "",
             attributes: [NSAttributedString.Key.foregroundColor:
-                            AppColors.searchBar]
+                            AppColors.darkGrey]
         )
         endEditing(true)
         setImage(UIImage(named: "SearchIcon"), for: .search, state: .normal)
