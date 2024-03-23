@@ -9,16 +9,26 @@ import UIKit
 
 final class WeatherView: UIView {
 
+    // MARK: - Properties
+    var viewModel: WeatherViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
+
+    // MARK: - Service
+    private let networkService = NetworkService.service
+
     // MARK: - UI
-    private let citylabel: UILabel = {
+    let citylabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let temperaturelabel: UILabel = {
+    let temperaturelabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .black
@@ -26,15 +36,14 @@ final class WeatherView: UIView {
         return label
     }()
 
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(resource: .brokenClouds)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let conditionlabel: UILabel = {
+    let conditionlabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
         label.textColor = .black
@@ -42,7 +51,7 @@ final class WeatherView: UIView {
         return label
     }()
 
-    private let maxTemplabel: UILabel = {
+    let maxTemplabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .black
@@ -50,7 +59,7 @@ final class WeatherView: UIView {
         return label
     }()
 
-    private let minTemplabel: UILabel = {
+    let minTemplabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .black
@@ -58,7 +67,7 @@ final class WeatherView: UIView {
         return label
     }()
 
-    private lazy var tempStackView: UIStackView = {
+    lazy var tempStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [maxTemplabel, minTemplabel])
         stackView.axis = .horizontal
         stackView.distribution = .fillProportionally
@@ -67,7 +76,7 @@ final class WeatherView: UIView {
         return stackView
     }()
 
-    private let humiditylabel: UILabel = {
+    let humiditylabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .black
@@ -75,7 +84,7 @@ final class WeatherView: UIView {
         return label
     }()
 
-    private let windSpeedlabel: UILabel = {
+    let windSpeedlabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.textColor = .black
@@ -134,14 +143,36 @@ extension WeatherView {
 
 // MARK: - Configure
 extension WeatherView {
-    public func configure(with model: WeatherModel) {
-        citylabel.text = model.cityName
-        temperaturelabel.text = "\(model.temperatureString)"
-        if let icon = model.icon {
-            let iconId = "https://openweathermap.org/img/wn/\(icon)@2x.png"
-            if let iconURL = URL(string: iconId) {
-                self.imageView.load(url: iconURL)
-            }
+
+    private func updateUI() {
+        if let viewModel = viewModel {
+            citylabel.text = "City: \(viewModel.getCityName() ?? "")"
+            temperaturelabel.text = "Temperature: \(viewModel.getFormattedTemperature() ?? "")"
+            conditionlabel.text = viewModel.getFormattedCondition()
+            maxTemplabel.text = viewModel.getFormattedMaxTemperature()
+            minTemplabel.text = viewModel.getFormattedMinTemperature()
+            humiditylabel.text = viewModel.getFormattedHumidity()
+            windSpeedlabel.text = viewModel.getFormattedWindSpeed()
         }
     }
+
+
+//    func fetchWeather(for city: String) {
+//        service.fetchWeather(for: city) { [weak self] result in
+//            switch result {
+//            case .success(let weather):
+//                DispatchQueue.main.async {
+//                    self?.citylabel.text = "City: \(weather.cityName)"
+//                    self?.temperaturelabel.text = "Temperature: \(weather.temperature)°C"
+//                    self?.conditionlabel.text = "Condition: \(weather.conditionID)"
+//                    self?.maxTemplabel.text = "Max Temp: \(weather.maxTemperature)°C"
+//                    self?.minTemplabel.text = "Min Temp: \(weather.minTemperature)°C"
+//                    self?.humiditylabel.text = "Humidity: \(weather.humidity)%"
+//                    self?.windSpeedlabel.text = "Wind Speed: \(weather.windSpeedString) m/s"
+//                }
+//            case .failure(let failure):
+//                print("Error fetching weather: \(failure)")
+//            }
+//        }
+//    }
 }

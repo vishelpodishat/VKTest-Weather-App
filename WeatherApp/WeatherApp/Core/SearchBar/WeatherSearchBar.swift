@@ -52,6 +52,6 @@ extension WeatherSearchBar: UISearchBarDelegate {
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.becomeFirstResponder() // Show keyboard
+        searchBar.becomeFirstResponder()
     }
 }
