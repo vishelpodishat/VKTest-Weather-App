@@ -7,9 +7,10 @@
 
 import Foundation
 
-enum NetworkError: Error {
-    case invalidURLComponents
+enum NetworkError: LocalizedError {
     case invalidURL
-    case weatherNotFound
-    case unableToParseJSON
+    case requestFailed
+    case networkFailed
+    case decodingFailed
+    case dataFailed
 }

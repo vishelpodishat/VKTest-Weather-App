@@ -8,97 +8,69 @@
 import UIKit
 import CoreLocation
 
-final class WeatherViewModel: NSObject, CLLocationManagerDelegate {
+class WeatherCollectionViewCellViewModel {
+    var weatherForecast: WeatherForecast
 
-    // MARK: - Data
-    private var weatherData: WeatherData?
-
-    private let networkService = NetworkService.service
-    let locationManager = CLLocationManager()
-    weak var delegate: WeatherManagerDelegate?
-
-    init(weatherData: WeatherData) {
-        self.weatherData = weatherData
+    init(weatherForecast: WeatherForecast) {
+        self.weatherForecast = weatherForecast
     }
 
-//    func fetchWeatherForCurrentLocation() {
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.requestLocation()
-//    }
-
-    func updateWeatherData(_ data: WeatherData) {
-        weatherData = data
-    }
-
-    func updateWeatherView(_ weatherView: WeatherView) {
-        weatherView.citylabel.text = "City: \(getCityName() ?? "")"
-        weatherView.temperaturelabel.text = "Temperature: \(getFormattedTemperature() ?? "")"
-        weatherView.conditionlabel.text = getFormattedCondition()
-        weatherView.maxTemplabel.text = getFormattedMaxTemperature()
-        weatherView.minTemplabel.text = getFormattedMinTemperature()
-        weatherView.humiditylabel.text = getFormattedHumidity()
-        weatherView.windSpeedlabel.text = getFormattedWindSpeed()
-    }
-
-    func getCityName() -> String? {
-        return weatherData?.name
-    }
-
-    func getFormattedTemperature() -> String? {
-        if let temp = weatherData?.main.temp {
-            return "\(temp)°C"
+    public var dayOfWeek: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let date = Date(timeIntervalSince1970: weatherForecast.dt)
+        if Calendar.current.isDateInToday(date) {
+            return "Сегодня" 
+        } else {
+            return dateFormatter.string(from: date).capitalized
         }
-        return nil
     }
 
-    func getFormattedCondition() -> String? {
-        if let conditionID = weatherData?.weather.first?.id{
-            return "Condition: \(conditionID)"
+
+    public var temperatureImage: UIImage {
+        let iconName = self.getIconForecast(of: weatherForecast.weather[0].id)
+        return  UIImage(
+            systemName: iconName
+        )!.scalePreservingAspectRatio(
+            targetSize: CGSize(
+                width: 40,
+                height: 40
+            )
+        ).withTintColor(
+            AppColors.secondary
+        )
+    }
+
+    public var maxTemperature: String {
+        return String(format: "%.0f°", weatherForecast.main.tempMax)
+    }
+
+    public var minTemperature: String {
+        return String(format: "%.0f°", weatherForecast.main.tempMin)
+    }
+
+
+
+    // Code Icons https://openweathermap.org/weather-conditions
+    private func getIconForecast(of id: Int) -> String {
+        switch id {
+        case 200...232:
+            return WeatherIconEnum.thunderstorm.rawValue
+        case 300...321:
+            return WeatherIconEnum.drizzle.rawValue
+        case 500...531:
+            return WeatherIconEnum.rain.rawValue
+        case 600...622:
+            return WeatherIconEnum.snow.rawValue
+        case 800:
+            return WeatherIconEnum.clear.rawValue
+        case 801...804:
+            return WeatherIconEnum.clouds.rawValue
+        default:
+            return WeatherIconEnum.other.rawValue
         }
-        return nil
     }
 
-    func getFormattedMaxTemperature() -> String? {
-        if let maxTemp = weatherData?.main.tempMax {
-            return "Max Temp: \(maxTemp)°C"
-        }
-        return nil
-    }
 
-    func getFormattedMinTemperature() -> String? {
-        if let minTemp = weatherData?.main.tempMin {
-            return "Min Temp: \(minTemp)°C"
-        }
-        return nil
-    }
-
-    func getFormattedHumidity() -> String? {
-        if let humidity = weatherData?.main.humidity {
-            return "Humidity: \(humidity)%"
-        }
-        return nil
-    }
-
-    func getFormattedWindSpeed() -> String? {
-        if let windSpeed = weatherData?.wind.speed {
-            return "Wind Speed: \(windSpeed) m/s"
-        }
-        return nil
-    }
-
-    // MARK: - CLLocationManagerDelegate
-    func setupLocationManager() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-    }
-}
-
-extension WeatherViewModel: WeatherManagerDelegate {
-    func didUpdateWeather(_ weather: WeatherModel) {
-        delegate?.didUpdateWeather(weather)
-    }
-
-    func didFailWithError(_ error: Error) {
-        delegate?.didFailWithError(error)
-    }
 }

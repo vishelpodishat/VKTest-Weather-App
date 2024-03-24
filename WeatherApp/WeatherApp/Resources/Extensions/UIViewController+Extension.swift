@@ -27,18 +27,21 @@ extension UIViewController {
         let message: String
 
         switch error {
-        case .invalidURLComponents:
+        case .invalidURL:
             title = "Invalid URL Components"
             message = "The URL components are invalid."
-        case .invalidURL:
-            title = "Invalid URL"
-            message = "The URL is invalid."
-        case .weatherNotFound:
-            title = "Weather Not Found"
-                        message = "The weather data was not found."
-        case .unableToParseJSON:
-            title = "Unable to Parse JSON"
-                       message = "The JSON data could not be parsed."
+        case .requestFailed:
+            title = "Invalid Request Components"
+            message = "The Request components are invalid."
+        case .networkFailed:
+            title = "Network Error"
+            message = "The Network are invalid."
+        case .decodingFailed:
+            title = "Invalid Decoding Try"
+            message = "The Decoding error"
+        case .dataFailed:
+            title = "Invalid Data Components"
+            message = "The Data components are invalid."
         }
 
         let alertController =  UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -20,3 +20,29 @@ extension UIImageView {
         }
     }
 }
+
+extension UIImage {
+    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
+        let widthScaleRatio = targetSize.width / size.width
+        let heightScaleRatio = targetSize.height / size.height
+
+        let scaleFactor = min(widthScaleRatio, heightScaleRatio)
+
+        let scaledImageSize = CGSize(
+            width: size.width * scaleFactor,
+            height: size.height * scaleFactor
+        )
+
+        let renderer = UIGraphicsImageRenderer(size: scaledImageSize)
+
+        let image = renderer.image { _ in
+            self.draw(in: CGRect(
+                origin: .zero,
+                size: scaledImageSize
+            ))
+        }
+
+        return image
+    }
+}
+

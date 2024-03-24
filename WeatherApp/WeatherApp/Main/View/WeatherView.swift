@@ -9,170 +9,235 @@ import UIKit
 
 final class WeatherView: UIView {
 
-    // MARK: - Properties
-    var viewModel: WeatherViewModel? {
-        didSet {
-            updateUI()
-        }
-    }
-
-    // MARK: - Service
-    private let networkService = NetworkService.service
-
-    // MARK: - UI
-    let citylabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 22, weight: .bold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    //MARK: - Components
+    lazy var loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        indicator.style = .large
+        indicator.color = .white
+        indicator.startAnimating()
+        return indicator
     }()
 
-    let temperaturelabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    lazy var temperatureLabel = UILabelComponent(labelText: "", 
+                                                 fontSize: 120,
+                                                 fontWeight: .bold,
+                                                 fontColor: .secondary)
+    lazy var temperatureSymbolLabel = UILabelComponent(
+        labelText: "°C",
+        fontSize: 26,
+        fontWeight: .bold,
+        fontColor: .primary
+    )
+    lazy var maxTemperature = MinMaxTemperatureFocusComponent(
+        temperatureLabel: "22°",
+        type: .max
+    )
+    lazy var minTemperature = MinMaxTemperatureFocusComponent(
+        temperatureLabel: "18°",
+        type: .min
+    )
+    lazy var dayLabel = UILabelComponent(
+        labelText: "Понедельник, 25",
+        fontSize: 30,
+        fontWeight: .regular,
+        fontColor: .primary
+    )
+    lazy var dayDescription = UILabelComponent(
+        labelText: "Чистое небо",
+        fontSize: 24,
+        fontWeight: .light,
+        fontColor: .primary
+    )
+
+    lazy var temperatureImage: UIImageView = {
+        let uiImage = UIImageView()
+        uiImage.contentMode = .scaleAspectFit
+        uiImage.translatesAutoresizingMaskIntoConstraints = false
+        uiImage.image = UIImage(systemName: "sun.max.fill")?.scalePreservingAspectRatio(targetSize: CGSize(width: 120, height: 120)).withTintColor(.white)
+        return uiImage
     }()
 
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    lazy var probabilityPrecipitation = ComponentView(
+        iconName: .rain,
+        iconSize: CGSize(
+            width: 30,
+            height: 30
+        ),
+        descriptionText: "50%"
+    )
+    lazy var windSpeed = ComponentView(
+        iconName: .wind,
+        iconSize: CGSize(
+            width: 30,
+            height: 30
+        ),
+        descriptionText: "16 km/h"
+    )
+    lazy var humidity = ComponentView(
+        iconName: .humidity,
+        iconSize: CGSize(
+            width: 30,
+            height: 30
+        ),
+        descriptionText: "50%"
+    )
+
+    //MARK: - Stacks Views
+    lazy var temperatureMinMaxFocus = Utils.createStackView(
+        items: [
+            temperatureSymbolLabel,
+            maxTemperature,
+            minTemperature
+        ],
+        axis: .vertical,
+        alignment: .leading,
+        distribution: .equalCentering,
+        spacing: 0
+    )
+    
+    lazy var temperatureFocus =  Utils.createStackView(
+        items: [
+            temperatureLabel,
+            temperatureMinMaxFocus
+        ],
+        axis: .horizontal,
+        alignment: .center,
+        distribution: .equalCentering,
+        spacing: 0
+    )
+    
+    lazy var temperatureDescription = Utils.createStackView(
+        items: [
+            temperatureImage,
+            dayDescription
+        ],
+        axis: .vertical,
+        alignment: .center,
+        distribution: .fillProportionally,
+        spacing: 10
+    )
+    
+    lazy var aditionalInfoFocus =  Utils.createStackView(
+        items: [
+            probabilityPrecipitation,
+            windSpeed,
+            humidity
+        ],
+        axis: .horizontal,
+        alignment: .center,
+        distribution: .fillEqually,
+        spacing: 64
+    )
+    
+    lazy var container = Utils.createStackView(
+        items: [
+            temperatureFocus,
+            dayLabel,
+            temperatureDescription,
+            aditionalInfoFocus,
+            collectionView
+        ],
+        axis: .vertical,
+        alignment: .center,
+        distribution: .fillEqually,
+        spacing: 0
+    )
+
+    // MARK: - CollectionView
+    lazy var flowLayout: UICollectionViewFlowLayout = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumInteritemSpacing = 1
+        return flowLayout
     }()
 
-    let conditionlabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let maxTemplabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let minTemplabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    lazy var tempStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [maxTemplabel, minTemplabel])
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    let humiditylabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let windSpeedlabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.flowLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(ofType: WeatherCollectionViewCell.self)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
-        setupConstraints()
+        backgroundColor = .black
+        self.configureView()
+        self.addSubViews()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-
-// MARK: - Setup
-extension WeatherView {
-    // MARK: - Setup Views
-    private func setupViews() {
-        [citylabel, temperaturelabel, imageView, conditionlabel,
-         tempStackView, humiditylabel, windSpeedlabel].forEach(addSubview)
+    private func configureView() {
+        container.isHidden = true
     }
 
-    // MARK: - Setup Constraints
-    private func setupConstraints() {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.configConstraints()
+    }
+
+    private func addSubViews() {
+        self.addSubview(loadingIndicator)
+        self.addSubview(container)
+    }
+
+    private func configConstraints() {
         NSLayoutConstraint.activate([
-            citylabel.topAnchor.constraint(equalTo: topAnchor),
-            citylabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            temperaturelabel.topAnchor.constraint(equalTo: citylabel.bottomAnchor, constant: 10),
-            temperaturelabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            imageView.centerYAnchor.constraint(equalTo: temperaturelabel.centerYAnchor),
-            imageView.trailingAnchor.constraint(equalTo: temperaturelabel.leadingAnchor, constant: -20),
-            imageView.widthAnchor.constraint(equalToConstant: 75),
-            imageView.heightAnchor.constraint(equalToConstant: 75),
-
-            conditionlabel.topAnchor.constraint(equalTo: temperaturelabel.bottomAnchor, constant: 10),
-            conditionlabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            tempStackView.topAnchor.constraint(equalTo: conditionlabel.bottomAnchor, constant: 10),
-            tempStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            humiditylabel.topAnchor.constraint(equalTo: tempStackView.bottomAnchor, constant: 10),
-            humiditylabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-            windSpeedlabel.topAnchor.constraint(equalTo: humiditylabel.bottomAnchor, constant: 10),
-            windSpeedlabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            self.loadingIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.loadingIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.temperatureImage.heightAnchor.constraint(lessThanOrEqualToConstant: 100),
+            self.temperatureLabel.heightAnchor.constraint(equalToConstant: 100),
+            self.temperatureMinMaxFocus.heightAnchor.constraint(equalTo: self.temperatureLabel.heightAnchor),
+            self.container.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor),
+            self.container.bottomAnchor.constraint(equalTo: self.layoutMarginsGuide.bottomAnchor),
+            self.container.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+            self.container.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.container.trailingAnchor)
         ])
-    }
-}
-
-// MARK: - Configure
-extension WeatherView {
-
-    private func updateUI() {
-        if let viewModel = viewModel {
-            citylabel.text = "City: \(viewModel.getCityName() ?? "")"
-            temperaturelabel.text = "Temperature: \(viewModel.getFormattedTemperature() ?? "")"
-            conditionlabel.text = viewModel.getFormattedCondition()
-            maxTemplabel.text = viewModel.getFormattedMaxTemperature()
-            minTemplabel.text = viewModel.getFormattedMinTemperature()
-            humiditylabel.text = viewModel.getFormattedHumidity()
-            windSpeedlabel.text = viewModel.getFormattedWindSpeed()
-        }
+        // Configure Flow Layout
+        self.flowLayout.itemSize = CGSize(width: frame.height * 0.15 - 1, height: frame.height * 0.15 - 1)
     }
 
 
-//    func fetchWeather(for city: String) {
-//        service.fetchWeather(for: city) { [weak self] result in
-//            switch result {
-//            case .success(let weather):
-//                DispatchQueue.main.async {
-//                    self?.citylabel.text = "City: \(weather.cityName)"
-//                    self?.temperaturelabel.text = "Temperature: \(weather.temperature)°C"
-//                    self?.conditionlabel.text = "Condition: \(weather.conditionID)"
-//                    self?.maxTemplabel.text = "Max Temp: \(weather.maxTemperature)°C"
-//                    self?.minTemplabel.text = "Min Temp: \(weather.minTemperature)°C"
-//                    self?.humiditylabel.text = "Humidity: \(weather.humidity)%"
-//                    self?.windSpeedlabel.text = "Wind Speed: \(weather.windSpeedString) m/s"
-//                }
-//            case .failure(let failure):
-//                print("Error fetching weather: \(failure)")
-//            }
-//        }
-//    }
+    public func setupDelegates(collectionViewDelegate: UICollectionViewDelegate, collectionViewDataSource: UICollectionViewDataSource) {
+        self.collectionView.delegate = collectionViewDelegate
+        self.collectionView.dataSource = collectionViewDataSource
+    }
+
+    public func setupInfo(with viewModel: HomeScreenViewModel, index: Int) {
+        self.loadingIndicator.stopAnimating()
+        self.temperatureLabel.text = viewModel.getTemperature(index)
+        self.minTemperature.updateTemperatureText(viewModel.getMinTemperature(index))
+        self.maxTemperature.updateTemperatureText(viewModel.getMaxTemperature(index))
+        self.dayLabel.text = viewModel.getDayAndDate(index)
+        self.temperatureImage.image = viewModel.getTemperatureImage(index)
+        self.dayDescription.text = viewModel.getDayDescription(index)
+        self.probabilityPrecipitation.updateData(descriptionText: viewModel.getProbabilityPrecipitation(index))
+        self.windSpeed.updateData(descriptionText: viewModel.getWindSpeed(index))
+        self.humidity.updateData(descriptionText: viewModel.getHumidity(index))
+
+        UIView.transition(
+            with: self.container,
+            duration: 0.1,
+            options: .transitionCrossDissolve,
+            animations: nil
+        )
+    }
+
+    public func showContainer(isHidden: Bool) {
+        UIView.transition(
+            with: self.container,
+            duration: 0.2,
+            options: .transitionCrossDissolve,
+            animations: {self.container.isHidden = isHidden }
+        )
+    }
 }
+

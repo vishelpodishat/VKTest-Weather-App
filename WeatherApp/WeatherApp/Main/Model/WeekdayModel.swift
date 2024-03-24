@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum WeekdayModel: Int {
+enum WeekdayModel: Int, Codable {
     case sunday = 1
     case monday = 2
     case tuesday = 3
@@ -26,7 +26,13 @@ enum WeekdayModel: Int {
     }
 }
 
-struct WeekdayWeather {
-    let weekday: WeekdayModel
-    let temperature: Double
+struct WeekdayWeather: Codable {
+    let coord: Coord
+    let main: Main
 }
+
+// MARK: - Coord
+struct Coord: Codable {
+    let lon, lat: Double
+}
+

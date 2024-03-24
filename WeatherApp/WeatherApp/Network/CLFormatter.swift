@@ -45,7 +45,7 @@ class CustomDateFormatter {
     func dayOfTheWeek(from string: String) -> String {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         if let date = dateFormatter.date(from: string) {
-            let weekDay = Calendar.current.component(.weekday, from: date)
+            let _ = Calendar.current.component(.weekday, from: date)
             dateFormatter.dateFormat = "EEEE"
             return dateFormatter.string(from: date)
         } else {
