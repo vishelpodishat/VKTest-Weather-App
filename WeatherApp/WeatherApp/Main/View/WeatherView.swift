@@ -73,7 +73,7 @@ final class WeatherView: UIView {
             width: 30,
             height: 30
         ),
-        descriptionText: "16 km/h"
+        descriptionText: "16 км/ч"
     )
     lazy var humidity = ComponentView(
         iconName: .humidity,

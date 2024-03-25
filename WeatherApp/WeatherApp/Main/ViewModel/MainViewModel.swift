@@ -76,7 +76,7 @@ class HomeScreenViewModel: NSObject {
     public func getDayAndDate(_ index: Int) -> String {
         let date = Date(timeIntervalSince1970: forecastData.singleDays[index].dt)
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "pt_BR")
+        dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "EEEE, dd"
 
         return dateFormatter.string(from: date).capitalized
@@ -98,7 +98,7 @@ class HomeScreenViewModel: NSObject {
 
     public func getWindSpeed(_ index: Int) -> String {
         let speed = forecastData.singleDays[index].wind.speed * 3.6
-        return String(format: "%.0f km/h", speed)
+        return String(format: "%.0f км/ч", speed)
     }
 
     public func getHumidity(_ index: Int) -> String {

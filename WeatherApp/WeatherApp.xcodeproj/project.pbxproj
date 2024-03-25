@@ -24,13 +24,10 @@
 		1628772F2BADB7C0001FEA91 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628772E2BADB7C0001FEA91 /* UIImageView+Extension.swift */; };
 		162877312BADDBCA001FEA91 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877302BADDBCA001FEA91 /* UIViewController+Extension.swift */; };
 		1628773B2BAEFA79001FEA91 /* CLFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628773A2BAEFA79001FEA91 /* CLFormatter.swift */; };
-		1628773D2BAEFB75001FEA91 /* WeekdayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628773C2BAEFB75001FEA91 /* WeekdayModel.swift */; };
-		1628773F2BAEFC5F001FEA91 /* SearchCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628773E2BAEFC5F001FEA91 /* SearchCacheManager.swift */; };
 		162877412BAEFD10001FEA91 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877402BAEFD10001FEA91 /* NetworkError.swift */; };
 		162877442BAF48E1001FEA91 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877432BAF48E1001FEA91 /* SearchViewController.swift */; };
 		162877472BB0342E001FEA91 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877462BB0342E001FEA91 /* Constants.swift */; };
 		1628774A2BB07AC2001FEA91 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877492BB07AC1001FEA91 /* LocationManager.swift */; };
-		1628774E2BB0C3AC001FEA91 /* CurrentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628774D2BB0C3AC001FEA91 /* CurrentTableViewCell.swift */; };
 		162877512BB0E26A001FEA91 /* PrimaryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877502BB0E26A001FEA91 /* PrimaryLabel.swift */; };
 		162877532BB0E38A001FEA91 /* PrimaryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877522BB0E38A001FEA91 /* PrimaryStackView.swift */; };
 		162877562BB0E45D001FEA91 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162877552BB0E45D001FEA91 /* ComponentView.swift */; };
@@ -62,13 +59,10 @@
 		1628772E2BADB7C0001FEA91 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		162877302BADDBCA001FEA91 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		1628773A2BAEFA79001FEA91 /* CLFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLFormatter.swift; sourceTree = "<group>"; };
-		1628773C2BAEFB75001FEA91 /* WeekdayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayModel.swift; sourceTree = "<group>"; };
-		1628773E2BAEFC5F001FEA91 /* SearchCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCacheManager.swift; sourceTree = "<group>"; };
 		162877402BAEFD10001FEA91 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		162877432BAF48E1001FEA91 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		162877462BB0342E001FEA91 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		162877492BB07AC1001FEA91 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		1628774D2BB0C3AC001FEA91 /* CurrentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewCell.swift; sourceTree = "<group>"; };
 		162877502BB0E26A001FEA91 /* PrimaryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLabel.swift; sourceTree = "<group>"; };
 		162877522BB0E38A001FEA91 /* PrimaryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryStackView.swift; sourceTree = "<group>"; };
 		162877552BB0E45D001FEA91 /* ComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
@@ -180,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				1628771C2BAC52BC001FEA91 /* WeatherData.swift */,
-				1628773C2BAEFB75001FEA91 /* WeekdayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				162877202BAC54A4001FEA91 /* WeatherCollectionViewCell.swift */,
-				1628774D2BB0C3AC001FEA91 /* CurrentTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -229,7 +221,6 @@
 				162877482BB07AB7001FEA91 /* LocationManager */,
 				162877272BACA545001FEA91 /* NetworkService.swift */,
 				1628773A2BAEFA79001FEA91 /* CLFormatter.swift */,
-				1628773E2BAEFC5F001FEA91 /* SearchCacheManager.swift */,
 				162877402BAEFD10001FEA91 /* NetworkError.swift */,
 			);
 			path = Network;
@@ -357,7 +348,6 @@
 				162877512BB0E26A001FEA91 /* PrimaryLabel.swift in Sources */,
 				162877312BADDBCA001FEA91 /* UIViewController+Extension.swift in Sources */,
 				1628772F2BADB7C0001FEA91 /* UIImageView+Extension.swift in Sources */,
-				1628774E2BB0C3AC001FEA91 /* CurrentTableViewCell.swift in Sources */,
 				162877532BB0E38A001FEA91 /* PrimaryStackView.swift in Sources */,
 				1628771F2BAC53C2001FEA91 /* WeatherViewModel.swift in Sources */,
 				162877582BB0E5F6001FEA91 /* MainViewModel.swift in Sources */,
@@ -368,7 +358,6 @@
 				162877472BB0342E001FEA91 /* Constants.swift in Sources */,
 				1628771B2BAB1AE5001FEA91 /* UITableView+Extension.swift in Sources */,
 				1628773B2BAEFA79001FEA91 /* CLFormatter.swift in Sources */,
-				1628773F2BAEFC5F001FEA91 /* SearchCacheManager.swift in Sources */,
 				1628772B2BADA60E001FEA91 /* WeatherView.swift in Sources */,
 				162876EC2BAAFFEB001FEA91 /* AppDelegate.swift in Sources */,
 				162877122BAB0D70001FEA91 /* AppColors.swift in Sources */,
@@ -376,7 +365,6 @@
 				162877562BB0E45D001FEA91 /* ComponentView.swift in Sources */,
 				162877442BAF48E1001FEA91 /* SearchViewController.swift in Sources */,
 				1628775A2BB0E7C3001FEA91 /* UICollectionView+Extension.swift in Sources */,
-				1628773D2BAEFB75001FEA91 /* WeekdayModel.swift in Sources */,
 				162876EE2BAAFFEB001FEA91 /* SceneDelegate.swift in Sources */,
 				1628771D2BAC52BC001FEA91 /* WeatherData.swift in Sources */,
 				162877252BAC6E4D001FEA91 /* WeatherSearchBar.swift in Sources */,

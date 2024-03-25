@@ -14,4 +14,5 @@ enum AppColors {
     static let secondary = UIColor().hex(0xFFFFFF)
     static let backgroundOne = UIColor().hex(0x262B2B)
     static let backgroundTwo = UIColor().hex(0x0F1D15)
+    static let vkBlue = UIColor().hex(0x3F8AE0)
 }

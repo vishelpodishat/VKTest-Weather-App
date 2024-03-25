@@ -50,9 +50,6 @@ class WeatherCollectionViewCellViewModel {
         return String(format: "%.0f°", weatherForecast.main.tempMin)
     }
 
-
-
-    // Code Icons https://openweathermap.org/weather-conditions
     private func getIconForecast(of id: Int) -> String {
         switch id {
         case 200...232:
@@ -71,6 +68,4 @@ class WeatherCollectionViewCellViewModel {
             return WeatherIconEnum.other.rawValue
         }
     }
-
-
 }

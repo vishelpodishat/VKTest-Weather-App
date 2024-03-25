@@ -40,7 +40,7 @@ final class SearchViewController: UIViewController {
     }
 
     private func configure() {
-        title = "Buscar Localização"
+        title = "Поиск"
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let appearance = UINavigationBarAppearance()
@@ -56,7 +56,7 @@ final class SearchViewController: UIViewController {
         searchController.searchBar.barStyle = .black
         searchController.searchBar.searchTextField.leftView?.tintColor = AppColors.primary
         searchController.searchBar.searchTextField.rightView?.tintColor = AppColors.primary
-        searchController.searchBar.tintColor = AppColors.primary
+        searchController.searchBar.tintColor = AppColors.grey
 
         navigationItem.searchController = searchController
     }

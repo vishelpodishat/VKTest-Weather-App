@@ -45,6 +45,4 @@ final class SearchScreenView: UIView {
         self.tableView.dataSource = dataSource
         self.tableView.delegate = tableDelegate
     }
-
-
 }

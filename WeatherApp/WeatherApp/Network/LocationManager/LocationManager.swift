@@ -44,7 +44,6 @@ class LocationManager: NSObject {
                     self.cllocationManager.startUpdatingLocation()
                     break
                 case .denied:
-                    // São Paulo City - Default
                     self.userLocationCoordinate = CLLocationCoordinate2D(latitude: -23.533773, longitude: -46.625290)
                     self.userLocationUpdated(self.userLocationCoordinate!)
                     break
@@ -136,7 +135,6 @@ extension LocationManager: MKLocalSearchCompleterDelegate {
             let searchRequest = MKLocalSearch.Request(completion: result)
             let coordinate = searchRequest.region.center
 
-            // Only Cities with State
             if(!street.contains("-")){
                 return nil
             }

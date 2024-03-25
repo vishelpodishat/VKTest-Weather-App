@@ -107,9 +107,9 @@ final class WeatherCollectionViewCell: UICollectionViewCell {
     //MARK: - Functions
     private func configure() {
         layer.cornerRadius = 8
-        layer.borderColor = AppColors.backgroundOne.cgColor
+        layer.borderColor = AppColors.primary.cgColor
         layer.borderWidth = 1
-        backgroundColor = AppColors.backgroundTwo
+        backgroundColor = AppColors.vkBlue
     }
     
     private func addSubViews() {

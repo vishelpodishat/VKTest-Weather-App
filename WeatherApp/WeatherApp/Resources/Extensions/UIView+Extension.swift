@@ -10,8 +10,8 @@ import UIKit
 extension UIView {
     func insertGradientLayer() {
         let gradientLayer = CAGradientLayer()
-        let fromColor = AppColors.backgroundOne.cgColor
-        let toColor = AppColors.backgroundTwo.cgColor
+        let fromColor = AppColors.vkBlue.cgColor
+        let toColor = AppColors.primary.cgColor
 
         gradientLayer.frame = bounds
         gradientLayer.colors = [fromColor, toColor]
